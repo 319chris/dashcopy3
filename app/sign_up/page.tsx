@@ -24,7 +24,7 @@ export default function SignUpPage(){
 		setNoticeMessage(null);
 
 		try{
-			const{ data, error } = await supabase.auth.signUp({email, password});
+			const{ data, error } = await supabase.auth.signUp({email, password, options:{ emailRedirectTo: `${window.location.origin}/auth/callback`}});
 
 			if(error){
 				setErrorMessage(error.message);
@@ -76,7 +76,7 @@ export default function SignUpPage(){
 		    </button>
 		  </form>
 
-		  <p>Already have an account? <Link href="/sign-in">Sign in</Link></p>
+		  <p>Already have an account? <Link href="/sign_in">Sign in</Link></p>
 		</main>
 		);
 }
